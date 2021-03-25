@@ -1,0 +1,19 @@
+name: Send Email
+on:
+  push:
+    branches: master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{secrets.MAIL_USERNAME}}
+        password: ${{secrets.MAIL_PASSWORD}}
+        subject: EPAT-N26 has completed 详细用例测试 test at the time of 2021-03-25 16:45:50.
+        body: file://README.md
+        to: xxx@yeah.net
+        from: Epoint Automation Test Team
